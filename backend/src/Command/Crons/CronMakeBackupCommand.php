@@ -2,6 +2,7 @@
 
 namespace App\Command\Crons;
 
+use App\Services\Backup\ObjectStorageBackupService;
 use App\Services\Database\DatabaseExporter;
 use App\Services\Files\Archivizer\ZipArchivizer;
 use App\Services\Module\ModulesService;
@@ -27,6 +28,7 @@ class CronMakeBackupCommand extends Command
 
     const OPTION_SKIP_FILES                 = 'skip-files';
     const OPTION_SKIP_DATABASE              = 'skip-database';
+    const OPTION_UPLOAD_TO_S3              = 'upload-to-s3';
 
     const ARGUMENT_BACKUP_DIRECTORY_MODULE  = 'backup-directory';
     const ARGUMENT_BACKUP_DATABASE_FILENAME = "backup-database-name";
@@ -46,10 +48,21 @@ class CronMakeBackupCommand extends Command
      */
     private ZipArchivizer $archivizer;
 
-    public function __construct(DatabaseExporter $databaseExporter, ZipArchivizer $archivizer, string $name = null) {
+    /**
+     * @var ObjectStorageBackupService|null $objectStorageBackupService
+     */
+    private ?ObjectStorageBackupService $objectStorageBackupService;
+
+    public function __construct(
+        DatabaseExporter $databaseExporter,
+        ZipArchivizer $archivizer,
+        ?ObjectStorageBackupService $objectStorageBackupService = null,
+        ?string $name = null
+    ) {
         parent::__construct($name);
         $this->databaseExporter = $databaseExporter;
         $this->archivizer       = $archivizer;
+        $this->objectStorageBackupService = $objectStorageBackupService;
     }
 
     protected function configure()
@@ -61,6 +74,7 @@ class CronMakeBackupCommand extends Command
             ->addArgument(self::ARGUMENT_BACKUP_FILES_FILENAME, InputArgument::REQUIRED,'Files backup will be saved under that file name')
             ->addOption(self::OPTION_SKIP_FILES, null,InputOption::VALUE_NONE, 'If set - will skip backing up the upload directory.')
             ->addOption(self::OPTION_SKIP_DATABASE, null,InputOption::VALUE_NONE, 'If set - will skip backing up the database.')
+            ->addOption(self::OPTION_UPLOAD_TO_S3, null,InputOption::VALUE_NONE, 'If set - will upload backup archives to S3-compatible object storage (requires BACKUP_OBJECT_STORAGE_ENABLED and credentials in .env).')
             ->addUsage("
                 sudo php7.4 bin/console cron:make-backup /var/www/tests/pms sql_backup_file_name files_backup_file_name (will create a backups in the `/var/www/tests/pms`)
             ")
@@ -126,12 +140,16 @@ class CronMakeBackupCommand extends Command
                 $io->note(sprintf("Database backup will be skipped"));
             }
 
+            $optionUploadToS3 = $input->getOption(self::OPTION_UPLOAD_TO_S3);
+
             if( !$optionSkipFiles ){
                 $io->note("Now making files backup");
                 $this->backupFiles($io, $argumentBackupFilesFilename);
 
                 if( !$this->archivizer->isArchivedSuccessfully() ){
                     $io->error("Finished creating files backup but the archivizing process resulted in failure! Status: {$this->archivizer->getArchivingStatus()}");
+                } elseif ($optionUploadToS3 && $this->objectStorageBackupService?->isConfigured()) {
+                    $this->uploadArchiveToS3($io, $argumentBackupFilesFilename);
                 }
             }
 
@@ -140,13 +158,15 @@ class CronMakeBackupCommand extends Command
                 $this->backupDatabase($io, $argumentBackupDatabaseFilename);
                 if( !$this->archivizer->isArchivedSuccessfully() ){
                     $io->error("Finished creating sql backup but the archivizing process resulted in failure! Status: {$this->archivizer->getArchivingStatus()}");
+                } elseif ($optionUploadToS3 && $this->objectStorageBackupService?->isConfigured()) {
+                    $this->uploadArchiveToS3($io, $argumentBackupDatabaseFilename);
                 }
             }
 
         }
         $io->note("Backup process has been completed");
 
-        return 1;
+        return Command::SUCCESS;
     }
 
     /**
@@ -193,6 +213,7 @@ class CronMakeBackupCommand extends Command
             ModulesService::MODULE_NAME_IMAGES => self::PUBLIC_DIR_ROOT . DIRECTORY_SEPARATOR . EnvReader::getImagesUploadDir(),
             ModulesService::MODULE_NAME_FILES  => self::PUBLIC_DIR_ROOT . DIRECTORY_SEPARATOR . EnvReader::getFilesUploadDir(),
             ModulesService::MODULE_NAME_VIDEO  => self::PUBLIC_DIR_ROOT . DIRECTORY_SEPARATOR . EnvReader::getVideoUploadDir(),
+            ModulesService::MODULE_NAME_SCIENTIFIC_PAPERS => self::PUBLIC_DIR_ROOT . DIRECTORY_SEPARATOR . EnvReader::getScientificPapersUploadDir(),
         ];
 
         $this->archivizer->setArchiveName($backupFilesFilename);
@@ -204,6 +225,26 @@ class CronMakeBackupCommand extends Command
             $io->success($message);
         }else{
             $io->error($message);
+        }
+    }
+
+    private function uploadArchiveToS3(SymfonyStyle $io, string $baseFilename): void
+    {
+        if (!$this->objectStorageBackupService || !$this->objectStorageBackupService->isConfigured()) {
+            return;
+        }
+
+        $archivePath = $this->archivizer->getArchiveFullPath();
+        if (!file_exists($archivePath)) {
+            $io->warning("Archive file not found for S3 upload: {$archivePath}");
+            return;
+        }
+
+        try {
+            $s3Uri = $this->objectStorageBackupService->uploadFile($archivePath);
+            $io->success("Uploaded to object storage: {$s3Uri}");
+        } catch (Exception $e) {
+            $io->error("Failed to upload to S3: " . $e->getMessage());
         }
     }
 }

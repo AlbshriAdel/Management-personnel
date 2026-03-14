@@ -4,6 +4,17 @@
 **Repository Structure:** Backend (PHP/Symfony) + Frontend (Vue.js/TypeScript) - separate repos  
 **Installation Guide:** https://volmarg.github.io/docs/getting-started/installation.html
 
+## Implementation Status (Updated)
+
+| Phase | Feature | Status |
+|-------|---------|--------|
+| 1 | Scientific Papers module (cards, detail, checklist, versions, file manager) | ✅ Done |
+| 2 | Arabic language support + RTL layout | ✅ Done |
+| 3 | Section management from admin panel (display order, name, active) | ✅ Done |
+| 4 | Scheduled backups with Object Storage (S3) | ✅ Done |
+| 5 | File upload UI for Scientific Papers | ✅ Done |
+| 6 | File View/Preview for supported types | ✅ Done |
+
 ---
 
 ## Executive Summary

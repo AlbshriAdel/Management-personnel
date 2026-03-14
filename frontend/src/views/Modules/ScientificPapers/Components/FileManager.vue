@@ -7,10 +7,10 @@
       </span>
     </div>
 
-    <div class="mb-3 flex gap-2">
+    <div class="mb-3 flex gap-2 flex-wrap">
       <input v-model="newFolderName"
              type="text"
-             class="flex-1 px-2 py-1 border rounded dark:bg-gray-700 dark:border-gray-600"
+             class="flex-1 min-w-[120px] px-2 py-1 border rounded dark:bg-gray-700 dark:border-gray-600"
              placeholder="New folder name"
       />
       <button type="button"
@@ -19,7 +19,21 @@
       >
         Create folder
       </button>
+      <button type="button"
+              class="px-3 py-1 bg-green-600 text-white rounded text-sm hover:bg-green-700 flex items-center gap-1"
+              @click="openUploadModal"
+      >
+        <fa icon="upload" />
+        Upload files
+      </button>
     </div>
+
+    <UploadDialog :configuration-id="uploadConfigId"
+                  :extra-data="uploadExtraData"
+                  :is-visible="isUploadModalVisible"
+                  @modal-closed="isUploadModalVisible = false; load()"
+                  @upload-finished="load()"
+    />
 
     <div v-if="loading" class="py-4">Loading...</div>
     <div v-else>
@@ -61,7 +75,7 @@
                 <a :href="getFileUrl(file)"
                    target="_blank"
                    class="text-blue-600 hover:underline mr-2"
-                >Download</a>
+                >{{ canPreview(file) ? 'View' : 'Download' }}</a>
                 <button type="button"
                         class="text-red-500 hover:text-red-700"
                         @click="deleteFile(file)"
@@ -82,6 +96,9 @@
 import AppAxios from "@/scripts/Core/Services/Request/AppAxios";
 import SymfonyRoutes from "@/router/SymfonyRoutes";
 import EnvReader from "@/scripts/Core/System/EnvReader";
+import UploadDialog from "@/components/Ui/Upload/Dialog/UploadDialog.vue";
+
+const SCIENTIFIC_PAPERS_UPLOAD_CONFIG_ID = "a1b2c3d4e5f6scientificpapers789";
 
 export default {
   props: {
@@ -90,15 +107,28 @@ export default {
     currentPath: { type: String, default: "" },
   },
   emits: ["pathChanged"],
+  components: {
+    UploadDialog,
+  },
   data() {
     return {
       folders: [] as Array<Record>,
       files: [] as Array<Record>,
       newFolderName: "",
       loading: true,
+      isUploadModalVisible: false,
+      uploadPath: "" as string,
     };
   },
   computed: {
+    uploadConfigId(): string {
+      return SCIENTIFIC_PAPERS_UPLOAD_CONFIG_ID;
+    },
+    uploadExtraData(): Record<string, string> {
+      return {
+        uploadDir: this.uploadPath,
+      };
+    },
     pathParts(): string[] {
       return this.currentPath ? this.currentPath.split("/").filter(Boolean) : [];
     },
@@ -112,6 +142,17 @@ export default {
     await this.load();
   },
   methods: {
+    async openUploadModal(): Promise<void> {
+      let url = SymfonyRoutes.buildUrl(
+        `/module/scientific-papers/${this.paperId}/versions/${this.versionId}/files/upload-path`
+      );
+      if (this.currentPath) {
+        url += `?subPath=${encodeURIComponent(this.currentPath)}`;
+      }
+      const response = await new AppAxios().get(url);
+      this.uploadPath = response.data?.singleRecord?.uploadPath ?? "";
+      this.isUploadModalVisible = true;
+    },
     emitPath(path: string): void {
       this.$emit("pathChanged", path);
       this.$emit("path-changed", path);
@@ -170,6 +211,11 @@ export default {
       if (bytes < 1024) return bytes + " B";
       if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB";
       return (bytes / (1024 * 1024)).toFixed(1) + " MB";
+    },
+    canPreview(file: Record): boolean {
+      const ext = (file.type || "").toLowerCase();
+      const previewTypes = ["jpg", "jpeg", "png", "gif", "webp", "pdf", "svg"];
+      return previewTypes.includes(ext);
     },
   },
 };

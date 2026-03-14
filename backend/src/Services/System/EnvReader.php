@@ -40,6 +40,41 @@ class EnvReader extends AbstractController {
         return $_ENV['SCIENTIFIC_PAPERS_UPLOAD_DIR'] ?? 'upload/scientific_papers';
     }
 
+    public static function isBackupObjectStorageEnabled(): bool
+    {
+        return filter_var($_ENV['BACKUP_OBJECT_STORAGE_ENABLED'] ?? false, FILTER_VALIDATE_BOOLEAN);
+    }
+
+    public static function getBackupS3Endpoint(): string
+    {
+        return $_ENV['BACKUP_S3_ENDPOINT'] ?? 'https://s3.amazonaws.com';
+    }
+
+    public static function getBackupS3Region(): string
+    {
+        return $_ENV['BACKUP_S3_REGION'] ?? 'us-east-1';
+    }
+
+    public static function getBackupS3Bucket(): string
+    {
+        return $_ENV['BACKUP_S3_BUCKET'] ?? 'pms-backups';
+    }
+
+    public static function getBackupS3AccessKey(): string
+    {
+        return $_ENV['BACKUP_S3_ACCESS_KEY'] ?? '';
+    }
+
+    public static function getBackupS3SecretKey(): string
+    {
+        return $_ENV['BACKUP_S3_SECRET_KEY'] ?? '';
+    }
+
+    public static function getBackupS3PathPrefix(): string
+    {
+        return $_ENV['BACKUP_S3_PATH_PREFIX'] ?? 'pms-backups/';
+    }
+
     public static function getDatabaseUrl() {
         return $_ENV['DATABASE_URL'];
     }

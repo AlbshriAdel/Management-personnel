@@ -226,7 +226,7 @@ abstract class Archivizer {
     /**
      * @return string
      */
-    private function getArchiveFullPath(): string {
+    public function getArchiveFullPath(): string {
         return $this->archiveFullPath;
     }
 

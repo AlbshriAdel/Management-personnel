@@ -45,10 +45,18 @@ class ModulesLockAction extends AbstractController {
         
         $entriesData = [];
         foreach ($dtos as $dto) {
-            $entriesData[] = [
+            $entry = [
                 SettingsModuleLockDTO::KEY_NAME      => $dto->getName(),
                 SettingsModuleLockDTO::KEY_IS_LOCKED => $dto->isLocked(),
+                SettingsModuleLockDTO::KEY_ACTIVE   => $dto->isActive(),
             ];
+            if ($dto->getDisplayOrder() !== null) {
+                $entry[SettingsModuleLockDTO::KEY_DISPLAY_ORDER] = $dto->getDisplayOrder();
+            }
+            if ($dto->getDisplayName() !== null) {
+                $entry[SettingsModuleLockDTO::KEY_DISPLAY_NAME] = $dto->getDisplayName();
+            }
+            $entriesData[] = $entry;
         }
 
         $response = BaseResponse::buildOkResponse();
@@ -81,7 +89,10 @@ class ModulesLockAction extends AbstractController {
         foreach ($moduleLocks as $lockData) {
             $lockDto = new SettingsModuleLockDTO();
             $lockDto->setName($lockData[SettingsModuleLockDTO::KEY_NAME]);
-            $lockDto->setLocked($lockData[SettingsModuleLockDTO::KEY_IS_LOCKED]);
+            $lockDto->setLocked($lockData[SettingsModuleLockDTO::KEY_IS_LOCKED] ?? false);
+            $lockDto->setDisplayOrder($lockData[SettingsModuleLockDTO::KEY_DISPLAY_ORDER] ?? null);
+            $lockDto->setDisplayName($lockData[SettingsModuleLockDTO::KEY_DISPLAY_NAME] ?? null);
+            $lockDto->setActive($lockData[SettingsModuleLockDTO::KEY_ACTIVE] ?? true);
 
             $dtos[] = $lockDto;
         }

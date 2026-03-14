@@ -13,8 +13,11 @@ use Exception;
  */
 class SettingsModuleLockDTO extends AbstractDTO
 {
-    const KEY_NAME      = "name";
-    const KEY_IS_LOCKED = "isLocked";
+    const KEY_NAME          = "name";
+    const KEY_IS_LOCKED     = "isLocked";
+    const KEY_DISPLAY_ORDER = "displayOrder";
+    const KEY_DISPLAY_NAME  = "displayName";
+    const KEY_ACTIVE        = "active";
 
     /**
      * @var string $name
@@ -25,6 +28,21 @@ class SettingsModuleLockDTO extends AbstractDTO
      * @var bool $locked
      */
     private bool $locked;
+
+    /**
+     * @var int|null $displayOrder
+     */
+    private ?int $displayOrder = null;
+
+    /**
+     * @var string|null $displayName
+     */
+    private ?string $displayName = null;
+
+    /**
+     * @var bool $active
+     */
+    private bool $active = true;
 
     public function __construct(
         ?string $name = null,
@@ -71,6 +89,36 @@ class SettingsModuleLockDTO extends AbstractDTO
         $this->locked = $locked;
     }
 
+    public function getDisplayOrder(): ?int
+    {
+        return $this->displayOrder;
+    }
+
+    public function setDisplayOrder(?int $displayOrder): void
+    {
+        $this->displayOrder = $displayOrder;
+    }
+
+    public function getDisplayName(): ?string
+    {
+        return $this->displayName;
+    }
+
+    public function setDisplayName(?string $displayName): void
+    {
+        $this->displayName = $displayName;
+    }
+
+    public function isActive(): bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): void
+    {
+        $this->active = $active;
+    }
+
     /**
      * @param string $json
      * @return SettingsModuleLockDTO
@@ -96,6 +144,9 @@ class SettingsModuleLockDTO extends AbstractDTO
         $dto = new SettingsModuleLockDTO();
         $dto->setName($name);
         $dto->setLocked($IsVisible);
+        $dto->setDisplayOrder($dataArray[self::KEY_DISPLAY_ORDER] ?? null);
+        $dto->setDisplayName($dataArray[self::KEY_DISPLAY_NAME] ?? null);
+        $dto->setActive($dataArray[self::KEY_ACTIVE] ?? true);
 
         return $dto;
     }
@@ -107,10 +158,18 @@ class SettingsModuleLockDTO extends AbstractDTO
      */
     public function toArray(): array
     {
-        return [
+        $arr = [
            self::KEY_NAME      => $this->getName(),
            self::KEY_IS_LOCKED => $this->isLocked(),
         ];
+        if ($this->displayOrder !== null) {
+            $arr[self::KEY_DISPLAY_ORDER] = $this->displayOrder;
+        }
+        if ($this->displayName !== null) {
+            $arr[self::KEY_DISPLAY_NAME] = $this->displayName;
+        }
+        $arr[self::KEY_ACTIVE] = $this->active;
+        return $arr;
     }
 
 }

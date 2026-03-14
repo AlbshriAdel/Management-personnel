@@ -177,9 +177,13 @@ export default {
           });
         }
 
+        const moduleData = this.moduleLocks.find((m: Record) => m.name === name);
         moduleLocks.push({
           name: name,
           isLocked: isLocked,
+          displayOrder: moduleData?.displayOrder ?? null,
+          displayName: moduleData?.displayName ?? null,
+          active: moduleData?.active ?? true,
         });
       }
 
