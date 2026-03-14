@@ -1,0 +1,120 @@
+{
+    "systemSettings": {
+        "tab": {
+            "dashboard": {
+                "label": "Dashboard",
+                "widgetHeader": "Widget visibility",
+                "table": {
+                    "headers": {
+                        "name": {
+                            "label": "Name"
+                        },
+                        "displayWidget": {
+                            "label": "Status"
+                        }
+                    }
+                },
+                "widgetToName": {
+                    "schedules":  "Schedules",
+                    "goalProgress": "Goals progress",
+                    "goalPayments":  "Goals payments",
+                    "issues": "Pending issues"
+                }
+            },
+            "modules": {
+                "label": "Modules",
+                "lock": {
+                    "header": "Lock",
+                    "table": {
+                        "info": {
+                            "storage": "This is a <b>self-locking</b> module. At least one of the given modules must be unlocked: <b>Video</b>, <b>Files</b>, <b>Images</b>."
+                        },
+                        "headers": {
+                            "name": {
+                                "label": "Name"
+                            },
+                            "isLocked": {
+                                "label": "Is locked"
+                            },
+                            "info": {
+                                "label": "Info"
+                            }
+                        }
+                    }
+                }
+            },
+            "notifications": {
+                "label": "Notifications",
+                "configHeader": "Configuration",
+                "config": {
+                    "discordWebhook": {
+                        "input": {
+                            "label": "Discord webhook",
+                            "validation": {
+                                "notValidUrl": "Invalid Discord url webhook"
+                            }
+                        },
+                        "checkbox": {
+                            "label": "Use Discord webhook for reminders"
+                        }
+                    }
+                },
+                "button": {
+                    "submit": {
+                        "label": "Submit"
+                    }
+                }
+            },
+            "finances": {
+                "label": "Finances",
+                "currencies": {
+                    "header": "Currencies",
+                    "form": {
+                        "header": "Add currency",
+                        "name": {
+                            "label": "Name",
+                            "about": "Name of the currency"
+                        },
+                        "symbol": {
+                            "label": "Symbol",
+                            "about": "Symbol that should be displayed for records"
+                        },
+                        "multiplier": {
+                            "label": "Multiplier",
+                            "about": "Currency multiplier ratio toward the default"
+                        },
+                        "isDefault": {
+                            "label": "Is default",
+                            "state": {
+                                "0": "No",
+                                "1": "Yes"
+                            }
+                        },
+                        "submit": {
+                            "label": "Submit"
+                        }
+                    },
+                    "table": {
+                        "headers": {
+                            "name": {
+                                "label": "Name"
+                            },
+                            "symbol": {
+                                "label": "Symbol"
+                            },
+                            "multiplier": {
+                                "label": "Multiplier"
+                            },
+                            "isDefault": {
+                                "label": "is default"
+                            },
+                            "actions": {
+                                "label": "Actions"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

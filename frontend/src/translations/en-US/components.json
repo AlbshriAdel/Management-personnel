@@ -1,0 +1,44 @@
+{
+    "components": {
+        "multiselect": {
+            "text": {
+                "addOrSelect": "select, or write + press enter"
+            }
+        },
+        "yearSelect": {
+            "label": "Year",
+            "option": {
+                "all": {
+                    "label": "All"
+                }
+            }
+        },
+        "actions": {
+            "edit": {
+                "label": "Edit"
+            },
+            "remove": {
+                "label": "Remove"
+            },
+            "copy": {
+                "label": "Copy"
+            }
+        },
+        "modal": {
+            "buttons": {
+                "cancel": "Cancel"
+            },
+            "text": {
+                "removeRecord": "Do You really want to remove this entry?"
+            }
+        },
+        "passwordWithPreview": {
+            "togglePreview": {
+                "label": "Toggle preview"
+            },
+            "generatePassword": {
+                "label": "Generate password"
+            }
+        }
+    }
+}

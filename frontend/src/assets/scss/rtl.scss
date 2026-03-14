@@ -1,0 +1,37 @@
+/**
+ * RTL (Right-to-Left) layout overrides for Arabic
+ * Applied when dir="rtl" is set on html element
+ */
+[dir="rtl"] {
+  text-align: right;
+
+  .navbar-inner {
+    flex-direction: row-reverse;
+  }
+
+  .ml-auto {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .left-sidebar {
+    left: auto;
+    right: 0;
+  }
+
+  .dropdown-content.bottom-end {
+    right: auto;
+    left: 0;
+  }
+
+  /* Flip flex rows where needed */
+  .flex-row {
+    flex-direction: row-reverse;
+  }
+
+  /* Ensure icons and text flow correctly */
+  .fa, .la {
+    margin-left: 0.25rem;
+    margin-right: 0;
+  }
+}

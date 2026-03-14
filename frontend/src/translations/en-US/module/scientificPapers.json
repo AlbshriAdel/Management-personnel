@@ -1,0 +1,27 @@
+{
+    "scientificPapers": {
+        "list": {
+            "description": "Manage your scientific papers. Track status, maintain checklists, and organize files by version.",
+            "status": {
+                "inProgress": "In Progress",
+                "underReview": "Under Review",
+                "published": "Published"
+            },
+            "button": {
+                "addNew": {
+                    "hoverText": "Add new paper"
+                },
+                "edit": "Edit",
+                "remove": "Remove"
+            },
+            "noPapers": "No papers yet. Add your first scientific paper!"
+        },
+        "detail": {
+            "checklist": "Checklist",
+            "versions": "Versions",
+            "addChecklistItem": "Add item",
+            "addVersion": "Add version",
+            "editPaper": "Edit paper"
+        }
+    }
+}

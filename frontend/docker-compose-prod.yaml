@@ -1,0 +1,30 @@
+version: "2.4"
+services:
+  pms-front-prod:
+    container_name: pms-front-prod
+    hostname: pms-front-prod
+
+    entrypoint: sh -c "npm i vite@2.9.8 -g && http-server ./dist --port=80"
+    restart: always
+    working_dir: /var/www/html
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    tty: true
+    build:
+      context: .
+      dockerfile: ./dockerfile
+    ports:
+      - "4001:80" # If You change this then, You need to update the hmr port of vite.config.js
+    networks:
+      pms-front-prod:
+        ipv4_address: 21.11.0.6
+    volumes:
+      - ./:/var/www/html
+
+networks:
+  pms-front-prod:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 21.11.0.0/16
+          gateway: 21.11.0.1

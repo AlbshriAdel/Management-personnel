@@ -1,0 +1,36 @@
+{
+    "achievements": {
+        "list": {
+            "modal": {
+                "remove": {
+                    "header": "Remove achievement",
+                    "description": "Do You really want to remove this achievement"
+                },
+                "edit": {
+                    "header": "Edit achievement",
+                    "button": {
+                        "remove": {
+                            "label": "Remove"
+                        }
+                    }
+                }
+            },
+            "description":"Track of personal achievements, both smaller and bigger ones - as it's always nice to remember the successes toward personal goals and dreams.\n",
+            "form": {
+                "header": "Add new",
+                "name": {
+                    "label": "Name"
+                },
+                "description": {
+                    "label": "Description"
+                },
+                "type": {
+                    "label": "Type"
+                },
+                "submitButton": {
+                    "label": "Submit"
+                }
+            }
+        }
+    }
+}

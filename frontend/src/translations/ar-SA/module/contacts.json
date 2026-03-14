@@ -1,0 +1,133 @@
+{
+    "contacts": {
+        "tabs": {
+            "mainInfo": {
+                "label": "Main information"
+            },
+            "contactType": {
+                "label": "Contact types"
+            }
+        },
+        "description": "Store variety information about personal contacts. Supports grouping, assigning multiple contacts types, adding image and coloring the boxes.",
+        "button": {
+            "addNew": {
+                "hoverText": "Add new contact"
+            },
+            "edit": {
+                "label": "Edit"
+            },
+            "remove": {
+                "label": "Remove"
+            }
+        },
+        "list": {
+            "other": {
+                "group": {
+                    "label": "Group"
+                }
+            },
+            "modal": {
+                "typeEdit": {
+                    "header": "Edit type",
+                    "button": {
+                        "remove": {
+                            "label": "Remove"
+                        }
+                    }
+                },
+                "addEdit": {
+                    "button": {
+                        "close": {
+                            "label": "Close"
+                        }
+                    },
+                    "header": {
+                        "edit": "Edit contact",
+                        "add": "Add new contact"
+                    },
+                    "description": {
+                        "add": "When creating new contact, please save Your <b>main information</b> first - this popup will be closed after saving is done."
+                    },
+                    "contactForm": {
+                        "name":  {
+                            "label": "Name"
+                        },
+                        "imagePath": {
+                            "label":  "Image path"
+                        },
+                        "description":  {
+                            "label":  "Description"
+                        },
+                        "submit": {
+                            "label": "Submit"
+                        }
+                    },
+                    "typeForm": {
+                        "header": {
+                            "add": "Add type",
+                            "edit": "Edit type"
+                        },
+                        "type": {
+                            "label": "Type"
+                        },
+                        "value": {
+                            "label": "Value"
+                        },
+                        "submit": {
+                            "label": "Submit"
+                        }
+                    }
+                }
+            }
+        },
+        "settings": {
+            "description":"Management of contacts types, and contact groups",
+            "tabs": {
+                "contactType": {
+                    "label": "Contact type",
+                    "table": {
+                        "headers": {
+                            "name": "Name",
+                            "preview": "Preview",
+                            "actions": "Actions"
+                        }
+                    },
+                    "form": {
+                        "header": "Add new",
+                        "name": {
+                            "label": "Name"
+                        },
+                        "imagePath": {
+                            "label": "Image path"
+                        },
+                        "submitButton": {
+                            "label": "Submit"
+                        }
+                    }
+                },
+                "contactGroup": {
+                    "label": "Contact group",
+                    "form": {
+                        "header": "Add new",
+                        "name": {
+                            "label": "Name"
+                        },
+                        "color": {
+                            "label": "Color"
+                        },
+                        "submitButton": {
+                            "label": "Submit"
+                        }
+                    },
+                    "table": {
+                        "headers": {
+                            "name": "Name",
+                            "color": "Color",
+                            "actions": "Actions"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

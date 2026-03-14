@@ -1,0 +1,47 @@
+{
+    "views": {
+        "navbar": {
+            "main": {
+                "login": "تسجيل الدخول",
+                "register": "التسجيل"
+            }
+        }
+    },
+    "other": {
+        "moduleName": {
+            "backendToFrontendMapping": {
+                "Achievements": "Achievements",
+                "My Issues":  "Issues",
+                "My Schedules":  "Calendar",
+                "My Contacts": "Contacts",
+                "My Files":  "Files",
+                "My Images": "Images",
+                "My Video":  "Videos",
+                "My Goals": "Goals",
+                "My Todo":  "Todo",
+                "My Job": "Job",
+                "My Notes":  "Notes",
+                "My Passwords": "Passwords",
+                "My Payments": "Payments",
+                "My Shopping": "Shopping",
+                "My Travels":  "Travels",
+                "My Reports":  "Reports",
+                "Storage":  "Storage",
+                "Scientific Papers": "الأوراق العلمية"
+            }
+        },
+        "lockModal": {
+            "header": "Unlock system",
+            "headerLockBack": "Lock system",
+            "info": "This page will be reloaded upon submitting the form, any unsaved data <b>will be lost</b>",
+            "form": {
+                "lock": {
+                    "label": "Lock password"
+                },
+                "submit": {
+                    "label": "Submit"
+                }
+            }
+        }
+    }
+}

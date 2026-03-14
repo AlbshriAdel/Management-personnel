@@ -1,0 +1,137 @@
+{
+    "generic": {
+        "bool": {
+            "yesNo": {
+                "0": "لا",
+                "1": "نعم"
+            }
+        },
+        "action": {
+            "common": {
+                "button": {
+                    "confirm": {
+                        "label": "تأكيد"
+                    }
+                }
+            },
+            "edit": {
+                "dialog": {
+                    "header": "تحديث البيانات"
+                }
+            },
+            "remove": {
+                "dialog": {
+                    "header": "إزالة البيانات"
+                }
+            }
+        },
+        "state": {
+            "isForDashboard": {
+                "hover": {
+                    "notDisplayed": "هذا المربع غير مرئي على لوحة التحكم",
+                    "displayed": "هذا المربع مرئي على لوحة التحكم"
+                }
+            }
+        },
+        "coloredSwitch": {
+            "on": {
+                "label": "تشغيل"
+            },
+            "off": {
+                "label": "إيقاف"
+            }
+        },
+        "chart": {
+            "resetButton": {
+                "label": "إعادة تعيين التكبير"
+            }
+        },
+        "dialog": {
+            "uploadDialog": {
+                "header": "رفع"
+            }
+        },
+        "form": {
+            "search": {
+                "placeholder": "بحث"
+            },
+            "upload": {
+                "header": "نموذج الرفع",
+                "field": {
+                    "fileName": {
+                        "label": "اسم الملف"
+                    }
+                },
+                "actions": {
+                    "remove": {
+                        "label": "إزالة"
+                    }
+                },
+                "status": {
+                    "success": {
+                        "label": "نجاح"
+                    },
+                    "error": {
+                        "label": "خطأ"
+                    },
+                    "malicious": {
+                        "label": "فشل - ملف ضار"
+                    }
+                },
+                "test": {
+                    "fileToBig": "الملف المحدد كبير جداً ولا يمكن رفعه. الحد الأقصى لحجم الملف (ميجابايت): ",
+                    "maxFileSize": "الحد الأقصى لحجم الملف: ",
+                    "invalidName": "اسم الملف هذا غير صالح. أزل أي أحرف خاصة. الأحرف المسموحة: -_",
+                    "allowedFileExtensions": "امتدادات الملفات المسموحة: ",
+                    "allowedMimeTypes": "أنواع MIME المسموحة: ",
+                    "allowedNameCharacters": "الأحرف المسموحة في الاسم: ",
+                    "extensionNotAllowed": "هذا الامتداد غير مسموح: ",
+                    "allowedCharactersList": "حروف، أرقام، مسافة و: -_ ",
+                    "anyOtherCharactersWillBeRemoved": "سيتم إزالة أي أحرف أخرى",
+                    "fileAlreadyOnList": "هذا الملف موجود بالفعل في القائمة: "
+                },
+                "button": {
+                    "select": {
+                        "label": "اختيار"
+                    },
+                    "upload": {
+                        "label": "رفع"
+                    },
+                    "clearList": {
+                        "label": "مسح القائمة"
+                    }
+                }
+            }
+        },
+        "tags": {
+            "label": "الوسوم"
+        },
+        "asteriskFieldsAreRequired": "الحقول المميزة بـ * مطلوبة",
+        "clickHere": "انقر هنا",
+        "about": "حول",
+        "noResults": "لا توجد نتائج",
+        "noDataToDisplay": "لا توجد بيانات لعرضها",
+        "button": {
+            "confirm": {
+                "label": "تأكيد"
+            }
+        },
+        "text": {
+            "copiedToClipboard": "تم النسخ إلى الحافظة (يمكنك اللصق بـ CTRL+V).",
+            "accessDenied": "تم رفض الوصول. غير مسموح لك برؤية هذا المورد."
+        },
+        "wizard": {
+            "step": {
+                "previous": {
+                    "label": "رجوع"
+                },
+                "next": {
+                    "label": "متابعة"
+                },
+                "finish": {
+                    "label": "إنهاء"
+                }
+            }
+        }
+    }
+}

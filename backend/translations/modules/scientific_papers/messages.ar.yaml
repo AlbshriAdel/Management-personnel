@@ -1,0 +1,9 @@
+module:
+  scientific_papers:
+    status:
+      in_progress: "قيد التقدم"
+      under_review: "قيد المراجعة"
+      published: "منشور"
+    common:
+      paperNotFound: "لم يتم العثور على الورقة"
+      versionNotFound: "لم يتم العثور على الإصدار"

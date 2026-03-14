@@ -1,0 +1,15 @@
+security:
+  user:
+    register:
+      msg:
+        passwordMismatch: "'كلمة المرور' و'تأكيد كلمة المرور' غير متطابقتين"
+        lockPasswordMismatch: "'كلمة مرور القفل' و'تأكيد كلمة مرور القفل' غير متطابقتين"
+        emailSyntaxInvalid: "عنوان البريد الإلكتروني هذا غير صالح"
+        activeUserExists: "تم العثور على مستخدم نشط. يُسمح بمستخدم نشط واحد فقط!"
+        userWithEmailExists: "يوجد مستخدم بهذا البريد الإلكتروني"
+  lockResource:
+    invalidPassword: "كلمة مرور غير صالحة"
+    wholeSystemWasLocked: "تم قفل النظام بالكامل"
+    wholeSystemHasBeenUnlocked: "تم فتح النظام بالكامل"
+    resourceHasBeenLocked: "تم قفل المورد"
+    couldNotLockResource: "تعذر قفل المورد"

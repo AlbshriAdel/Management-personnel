@@ -1,0 +1,232 @@
+<?php
+
+namespace App\Entity\Modules\Todo;
+
+use App\Entity\Interfaces\EntityInterface;
+use App\Entity\Interfaces\SoftDeletableEntityInterface;
+use App\Entity\Modules\Issues\MyIssue;
+use App\Entity\System\Module;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\Modules\Todo\MyTodoRepository")
+ * @ORM\Table(name="my_todo")
+ */
+class MyTodo implements SoftDeletableEntityInterface, EntityInterface
+{
+
+    /**
+     * @var int $id
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @var string $name
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var string $description
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var boolean $deleted
+     * @ORM\Column(type="boolean")
+     */
+    private $deleted = 0;
+
+    /**
+     * @var boolean $completed
+     * @ORM\Column(type="boolean")
+     */
+    private $completed = 0;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $displayOnDashboard = 0;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\System\Module", inversedBy="myTodo")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $module;
+
+    /**
+     * @ORM\OneToMany(targetEntity=MyTodoElement::class, mappedBy="myTodo")
+     */
+    private $myTodoElement;
+
+    /**
+     * This is only help field to build later relation with given module
+     *
+     * @var int|null $relatedEntityId
+     */
+    private $relatedEntityId = 0;
+
+    /**
+     * @ORM\OneToOne(targetEntity=MyIssue::class, mappedBy="todo", cascade={"persist", "remove"})
+     */
+    private $myIssue;
+
+    public function __construct()
+    {
+        $this->myTodoElement = new ArrayCollection();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function isDeleted(): ?bool
+    {
+        return $this->deleted;
+    }
+
+    public function setDeleted(bool $deleted): self
+    {
+        $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    public function getCompleted(): ?bool
+    {
+        return $this->completed;
+    }
+
+    public function setCompleted(bool $completed): self
+    {
+        $this->completed = $completed;
+
+        return $this;
+    }
+
+    public function getDisplayOnDashboard(): ?bool
+    {
+        return $this->displayOnDashboard;
+    }
+
+    public function setDisplayOnDashboard(bool $displayOnDashboard): self
+    {
+        $this->displayOnDashboard = $displayOnDashboard;
+
+        return $this;
+    }
+
+    public function getModule(): ?Module
+    {
+        return $this->module;
+    }
+
+    public function setModule(?Module $module): self
+    {
+        $this->module = $module;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MyTodoElement[]
+     */
+    public function getMyTodoElement(): Collection
+    {
+        return $this->myTodoElement;
+    }
+
+    public function addMyTodoElement(MyTodoElement $myTodoElement): self
+    {
+        if (!$this->myTodoElement->contains($myTodoElement)) {
+            $this->myTodoElement[] = $myTodoElement;
+            $myTodoElement->setMyTodo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMyTodoElement(MyTodoElement $myTodoElement): self
+    {
+        if ($this->myTodoElement->contains($myTodoElement)) {
+            $this->myTodoElement->removeElement($myTodoElement);
+            // set the owning side to null (unless already changed)
+            if ($myTodoElement->getMyTodo() === $this) {
+                $myTodoElement->setMyTodo(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getRelatedEntityId():? int {
+        if ($this->getMyIssue()) {
+            return $this->getMyIssue()->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param int|null $relatedEntityId
+     */
+    public function setRelatedEntityId(?int $relatedEntityId): void {
+        $this->relatedEntityId = $relatedEntityId;
+    }
+
+    public function getMyIssue(): ?MyIssue
+    {
+        return $this->myIssue;
+    }
+
+    public function setMyIssue(?MyIssue $myIssue): self
+    {
+        $this->myIssue = $myIssue;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newTodo = null === $myIssue ? null : $this;
+        if (
+                !is_null($myIssue)
+            &&  $myIssue->getTodo() !== $newTodo
+        ) {
+            $myIssue->setTodo($newTodo);
+        }
+
+        return $this;
+    }
+
+}

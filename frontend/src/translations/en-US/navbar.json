@@ -1,0 +1,246 @@
+{
+    "navbar": {
+        "footer": {
+            "documentation": {
+                "label": "Documentation"
+            }
+        },
+        "topBar": {
+            "userMenu": {
+                "profile": {
+                    "description": "Profile settings - password, avatar, nick etc.",
+                    "label": "Profile"
+                },
+                "settings": {
+                    "description": "System settings - for example dashboard widgets.",
+                    "label": "Settings"
+                },
+                "lock": {
+                    "description": "Special second layer password. Unlocks the hidden entries, allows to show them back. See <b>Notes</b> module.",
+                    "state": {
+                        "locked": {
+                            "label": "Locked"
+                        },
+                        "unlocked": {
+                            "label": "Unlocked"
+                        }
+                    }
+                },
+                "logout": {
+                    "description": "Bye Bye!",
+                    "label": "Logout"
+                }
+            },
+            "notification": {
+                "message": "Notifications"
+            },
+            "timer": {
+                "timeLeft": {
+                    "message": "Time left until logged out"
+                }
+            }
+        },
+        "rightSidebar": {
+            "menu": {
+                "goals": {
+                    "label": "Goals",
+                    "children": {
+                        "list": {
+                            "label": "List"
+                        },
+                        "payments": {
+                            "label": "Payments"
+                        }
+                    }
+                },
+                "todo": {
+                    "label": "Todo",
+                    "children": {
+                        "list": {
+                            "label": "List"
+                        }
+                    }
+                },
+                "notes": {
+                    "label": "Notes",
+                    "children": {
+                        "create": {
+                            "label": "Create new"
+                        },
+                        "settings": {
+                            "label": "Settings"
+                        },
+                        "categories": {
+                            "label": "Categories"
+                        }
+                    }
+                },
+                "contacts": {
+                    "label": "Contacts",
+                    "children": {
+                        "contacts": {
+                            "label": "List"
+                        },
+                        "settings": {
+                            "label": "Settings"
+                        }
+                    }
+                },
+                "passwords": {
+                    "label": "Passwords",
+                    "children": {
+                        "list": {
+                            "label": "List"
+                        },
+                        "settings": {
+                            "label": "Settings"
+                        }
+                    }
+                },
+                "achievements": {
+                    "label": "Achievements",
+                    "children": {
+                        "list": {
+                            "label": "List"
+                        }
+                    }
+                },
+                "calendar": {
+                    "label": "Calendar",
+                    "children": {
+                        "view": {
+                            "label": "View"
+                        }
+                    }
+                },
+                "issues": {
+                    "label": "Issues",
+                    "children": {
+                        "pending": {
+                            "label": "Pending"
+                        }
+                    }
+                },
+                "travels": {
+                    "label": "Travels",
+                    "children": {
+                        "ideas": {
+                            "label": "Ideas"
+                        }
+                    }
+                },
+                "payments": {
+                    "label": "Payments",
+                    "children": {
+                        "productPrices": {
+                            "label": "Product prices"
+                        },
+                        "monthlyPayments": {
+                            "label": "Monthly payments"
+                        },
+                        "moneyOwed": {
+                            "label": "Money owed"
+                        },
+                        "incomes": {
+                            "label": "Incomes"
+                        },
+                        "bills": {
+                            "label": "Bills"
+                        },
+                        "settings": {
+                            "label": "Settings"
+                        }
+                    }
+                },
+                "shopping": {
+                    "label": "Shopping",
+                    "children": {
+                        "plans": {
+                            "label": "Plans"
+                        }
+                    }
+                },
+                "job": {
+                    "label": "Job",
+                    "children": {
+                        "afterhours": {
+                            "label": "Afterhours"
+                        },
+                        "holidays": {
+                            "label": "Holidays"
+                        },
+                        "settings": {
+                            "label": "Settings"
+                        }
+                    }
+                },
+                "reports": {
+                    "label": "Reports",
+                    "children": {
+                        "paymentSummaries": {
+                            "label": "Payment summaries"
+                        },
+                        "historicalMoneyOwed": {
+                            "label": "Historical money owed"
+                        },
+                        "paymentCharts": {
+                            "label": "Payment Charts"
+                        },
+                        "savingCharts": {
+                            "label": "Saving Charts"
+                        }
+                    }
+                },
+                "files": {
+                    "label": "Files",
+                    "children": {
+                        "settings": {
+                            "label": "Settings"
+                        },
+                        "mainFolder": {
+                            "label": "View"
+                        }
+                    }
+                },
+                "images": {
+                    "label": "Images",
+                    "children": {
+                        "settings": {
+                            "label": "Settings"
+                        },
+                        "mainFolder": {
+                            "label": "View"
+                        }
+                    }
+                },
+                "videos": {
+                    "label": "Videos",
+                    "children": {
+                        "settings": {
+                            "label": "Settings"
+                        },
+                        "mainFolder": {
+                            "label": "View"
+                        }
+                    }
+                },
+                "storage": {
+                    "label": "Storage",
+                    "children": {
+                        "manage": {
+                            "label": "Manage"
+                        }
+                    }
+                },
+                "scientificPapers": {
+                    "label": "Scientific Papers",
+                    "children": {
+                        "list": {
+                            "label": "Papers"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

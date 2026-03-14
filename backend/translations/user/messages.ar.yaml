@@ -1,0 +1,15 @@
+user:
+  settings:
+    personalData:
+      msg:
+        updateSuccess: "تم تحديث البيانات الشخصية"
+        profileImage:
+          noProfileImageWasFound: "لم يتم العثور على صورة شخصية للتغيير"
+          updateSuccess: "تم تحديث صورة الملف الشخصي"
+    email:
+      msg:
+        emailEmpty: "لا يمكن أن يكون عنوان البريد الإلكتروني فارغاً"
+        emailSyntaxInvalid: "عنوان البريد الإلكتروني هذا غير صالح"
+    password:
+      passwordMismatch: "'كلمة المرور' و'تأكيد كلمة المرور' غير متطابقتين"
+      updateSuccess: "تم تحديث كلمة المرور"

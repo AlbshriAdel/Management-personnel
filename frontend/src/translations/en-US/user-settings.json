@@ -1,0 +1,91 @@
+{
+    "userSettings": {
+        "tab": {
+            "baseData": {
+                "label": "Base data",
+                "header": "Base data",
+                "children": {
+                    "personalData": {
+                        "label": "Personal data",
+                        "modal": {
+                            "header": "Update Your personal data",
+                            "button": {
+                                "close": {
+                                    "label": "Close"
+                                }
+                            }
+                        },
+                        "form": {
+                            "userName": {
+                                "label": "Username"
+                            },
+                            "submit": {
+                                "label": "Submit"
+                            }
+                        }
+                    },
+                    "profileImage": {
+                        "label": "Profile image"
+                    },
+                    "emailAddress": {
+                        "label": "Email address",
+                        "dialog": {
+                            "header": "Update Your Email address",
+                            "button": {
+                                "cancel": {
+                                    "label": "Cancel"
+                                }
+                            }
+                        },
+                        "form": {
+                            "emailAddress": {
+                                "label": "Email address"
+                            },
+                            "submit": {
+                                "label": "Submit"
+                            }
+                        }
+                    }
+                }
+            },
+            "security": {
+                "label": "Security",
+                "header": "Security",
+                "children": {
+                    "changePassword": {
+                        "label": "Change password",
+                        "dialog": {
+                            "header": "Change Your password",
+                            "button": {
+                                "cancel": {
+                                    "label": "Cancel"
+                                }
+                            }
+                        },
+                        "form": {
+                            "submit": {
+                                "label": "Submit"
+                            }
+                        }
+                    },
+                    "changeLockPassword": {
+                        "label": "Change lock password",
+                        "dialog": {
+                            "header": "Change Your lock password",
+                            "button": {
+                                "cancel": {
+                                    "label": "Cancel"
+                                }
+                            }
+                        },
+                        "form": {
+                            "submit": {
+                                "label": "Submit"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

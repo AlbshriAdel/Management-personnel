@@ -1,0 +1,583 @@
+{
+    "payments": {
+        "settings": {
+            "description": "Management of payments types visible in the Monthly Payments submodule and the recurring payments which are used by the cron to insert certain payments each month automatically (like for example constant renting fee)",
+            "tab": {
+                "monthlyImport": {
+                    "header": "Monthly - import",
+                    "tab": {
+                        "profile": {
+                            "header": "Profiles"
+                        },
+                        "filterRule": {
+                            "header": "Filter rules",
+                            "table": {
+                                "header": {
+                                    "fieldName": {
+                                        "label": "Field name"
+                                    },
+                                    "ruleType": {
+                                        "label": "Type"
+                                    },
+                                    "rule": {
+                                        "label": "Rule"
+                                    },
+                                    "actions": {
+                                        "label": "Actions"
+                                    }
+                                }
+                            },
+                            "form": {
+                                "header": {
+                                    "add": "Add new"
+                                },
+                                "element": {
+                                    "fieldName": {
+                                        "label": "Field name"
+                                    },
+                                    "ruleType": {
+                                        "label": "Type",
+                                        "option": {
+                                            "regex": {
+                                                "label": "Regular expression"
+                                            },
+                                            "exact": {
+                                                "label": "Exact match"
+                                            }
+                                        }
+                                    },
+                                    "rule": {
+                                        "label": "Rule"
+                                    },
+                                    "submit": {
+                                        "label": "Submit"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "recurringPayments": {
+                    "header": "Recurring payments",
+                    "table": {
+                        "header": {
+                            "dayOfMonth": "Day of month",
+                            "money": "Money",
+                            "description": "Description",
+                            "type": "Type",
+                            "actions": "Actions"
+                        },
+                        "newForm": {
+                            "header": "Add new",
+                            "dayOfMonth": {
+                                "label": "Date of month"
+                            },
+                            "money": {
+                                "label": "Money"
+                            },
+                            "description": {
+                                "label": "Description"
+                            },
+                            "type": {
+                                "label": "Type"
+                            },
+                            "submit": {
+                                "label": "Submit"
+                            }
+                        }
+                    }
+                },
+                "paymentTypes": {
+                    "header": "Payment types",
+                    "table": {
+                        "header": {
+                            "name": "Name",
+                            "actions": "Actions"
+                        },
+                        "newForm": {
+                            "header": "Add new",
+                            "typeName": {
+                                "label": "Type name"
+                            },
+                            "submit": {
+                                "label": "Submit"
+                            }
+                        }
+                    }
+                },
+                "other": {
+                    "header": "Other",
+                    "currencyMultiplier": {
+                        "form": {
+                            "header": "Update multiplier",
+                            "currencyMultiplier": {
+                                "label": "Currency multiplier"
+                            },
+                            "submit": {
+                                "label": "Submit"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "moneyOwed": {
+            "description": "Track of the money owed to other people and owed by yourself. Consist of separate management groups, yields the summaries of financial debts with separation of the target (person / company etc.)",
+            "tabs": {
+                "byOthers": {
+                    "label": "Owed by others"
+                },
+                "byMe": {
+                    "label": "Owed by me"
+                },
+                "summary": {
+                    "label": "Summary",
+                    "text": {
+                        "owedByMe": "Owed by me",
+                        "owedByOthers": "Owed by others",
+                        "i-owe-to": "I Owe <b>{amount}{currency}</b> To <i>{target}</i>",
+                        "other-owe": "<i>{target}</i> owes me <b>{amount}{currency}</b>"
+                    }
+                }
+            },
+            "newForm": {
+                "header": "Add new entry",
+                "target": {
+                    "label": "Target"
+                },
+                "information": {
+                    "label": "Information"
+                },
+                "date": {
+                    "label": "Date"
+                },
+                "amount": {
+                    "label": "Amount"
+                },
+                "currency": {
+                    "label": "Currency"
+                },
+                "owedByMe": {
+                    "label": "Owed by me"
+                },
+                "submit": {
+                    "label": "Submit"
+                }
+            },
+            "table": {
+                "header": {
+                    "target": {
+                        "label": "Target"
+                    },
+                    "amount": {
+                        "label": "Amount"
+                    },
+                    "information": {
+                        "label": "Information"
+                    },
+                    "date": {
+                        "label": "Date"
+                    },
+                    "currency": {
+                        "label": "Currency"
+                    },
+                    "actions": {
+                        "label": "Actions"
+                    }
+                }
+            }
+        },
+        "productPrices": {
+            "description": "Organizable lists of assortment allows to keep an eye of the products that should be avoided in case of the need to manage the financial issues, where even shopping the basic goods matters.",
+            "table": {
+                "filter": {
+                    "header": "Filter by rejection",
+                    "rejection": {
+                        "all": "Show all",
+                        "rejectedOnly": "Show Rejected",
+                        "acceptedOnly": "Show Accepted"
+                    }
+                },
+                "header": {
+                    "header": {
+                        "new": "Add new product"
+                    },
+                    "name": {
+                        "label": "Name"
+                    },
+                    "market": {
+                        "label": "Market"
+                    },
+                    "products": {
+                        "label": "Products"
+                    },
+                    "information": {
+                        "label": "Information"
+                    },
+                    "rejected": {
+                        "label": "Is rejected"
+                    },
+                    "price": {
+                        "label": "Price"
+                    },
+                    "homeCurrency": {
+                        "label": "Home currency"
+                    },
+                    "actions": {
+                        "label": "Actions"
+                    }
+                }
+            },
+            "newForm": {
+                "header": "Add product",
+                "name": {
+                    "label": "Name"
+                },
+                "price": {
+                    "label": "Price"
+                },
+                "market": {
+                    "label": "Market"
+                },
+                "products": {
+                    "label": "Products"
+                },
+                "information": {
+                    "label": "Information"
+                },
+                "rejected": {
+                    "label": "Rejected"
+                },
+                "submit": {
+                    "label": "Submit"
+                }
+            }
+        },
+        "bills": {
+            "description": "Track of money spent on unpredicted or planned things, but not related to the standard monthly payments, like renting, electricity etc.",
+            "tab": {
+                "overview": {
+                    "label": "Bills overview"
+                },
+                "management": {
+                    "label": "Bills management"
+                },
+                "legend": {
+                    "label": "Legend"
+                }
+            },
+            "management": {
+                "table": {
+                    "header": {
+                        "startDate": {
+                            "label": "Start date"
+                        },
+                        "endDate": {
+                            "label": "End date"
+                        },
+                        "name": {
+                            "label": "Name"
+                        },
+                        "information": {
+                            "label": "Information"
+                        },
+                        "plannedAmount": {
+                            "label": "Planned amount"
+                        },
+                        "actions": {
+                            "label": "Actions"
+                        }
+                    }
+                },
+                "newForm": {
+                    "header": "Add new bill",
+                    "startDate": {
+                        "label": "Start date"
+                    },
+                    "endDate": {
+                        "label": "End date"
+                    },
+                    "name":  {
+                        "label": "Name"
+                    },
+                    "information": {
+                        "label": "Information"
+                    },
+                    "plannedAmount":  {
+                        "label": "Planned amount"
+                    },
+                    "submit": {
+                        "label": "Submit"
+                    }
+                }
+            },
+            "overview": {
+                "elementTable": {
+                    "header": {
+                        "amount": {
+                            "label": "Amount"
+                        },
+                        "name": {
+                            "label": "Name"
+                        },
+                        "date": {
+                            "label": "Date"
+                        },
+                        "actions": {
+                            "label": "Actions"
+                        }
+                    }
+                },
+                "newForm": {
+                    "header": "Add new bill element",
+                    "amount": {
+                        "label": "Amount"
+                    },
+                    "date": {
+                        "label": "Date"
+                    },
+                    "name":  {
+                        "label": "Name"
+                    },
+                    "bill": {
+                        "label": "Bill"
+                    },
+                    "submit": {
+                        "label": "Submit"
+                    }
+                }
+            },
+            "legend": {
+                "billColor": {
+                    "header": "Meanings behind bill colors",
+                    "exceed": "Spent amount exceeds the planned amount",
+                    "warn": "Spent amount almost exceeds the planned amount",
+                    "ok": "Spent amount is within the planned budged"
+                }
+            }
+        },
+        "description": "Organizable monthly incomes sources, used later on in the reporting",
+        "incomes": {
+            "description": "Organizable monthly incomes sources, used later on in the reporting",
+            "newForm": {
+                "header": "Add new entry",
+                "amount": {
+                    "label": "Amount"
+                },
+                "information": {
+                    "label": "Information"
+                },
+                "date": {
+                    "label": "Date"
+                },
+                "currency": {
+                    "label": "Currency"
+                },
+                "submit": {
+                    "label": "Submit"
+                }
+            },
+            "table": {
+                "header": {
+                    "amount": {
+                        "label": "Amount"
+                    },
+                    "information": {
+                        "label": "Information"
+                    },
+                    "date": {
+                        "label": "Date"
+                    },
+                    "currency": {
+                        "label": "Currency"
+                    },
+                    "actions": {
+                        "label": "Actions"
+                    }
+                }
+            }
+        },
+        "monthly": {
+            "tabs": {
+                "overview": {
+                    "label": "Overview"
+                },
+                "import": {
+                    "label": "Import",
+                    "step": {
+                        "upload": {
+                            "label": "Upload",
+                            "text": {
+                                "noFileUploaded": "No file has been uploaded!",
+                                "fileUploaded": "File has been uploaded",
+                                "moreThanOneWorksheet": "More than one worksheet has been found. Using the first one."
+                            }
+                        },
+                        "map": {
+                            "label": "Mapping",
+                            "form": {
+                                "column": {
+                                    "label": "Column"
+                                }
+                            },
+                            "text": {
+                                "columnValuesInvalid": "Some values in this column are invalid. Example:"
+                            }
+                        },
+                        "processData": {
+                            "label": "Overview",
+                            "button": {
+                                "removeIncomes": {
+                                    "label": "Remove incomes"
+                                },
+                                "removeByDates": {
+                                    "label": "Remove by dates"
+                                },
+                                "reloadData": {
+                                    "label": "Reload data"
+                                },
+                                "revertData": {
+                                    "label": "Revert data"
+                                },
+                                "delete": {
+                                    "popupMessage": "Delete"
+                                },
+                                "view": {
+                                    "popupMessage": "View original data"
+                                },
+                                "multiply": {
+                                    "label": "Multiply"
+                                },
+                                "reset": {
+                                    "label": "Reset"
+                                }
+                            },
+                            "originalDataModal": {
+                                "header": "Original import data"
+                            },
+                            "reloadDataModal": {
+                                "header": "Reload imported data",
+                                "body": "Do you really want to reload the imported data? All the values in the table will be removed!"
+                            },
+                            "revertDataModal": {
+                                "header": "Revert removed data",
+                                "body": "Clicking on the deleted row will revert it into the table.",
+                                "button": {
+                                    "close": {
+                                        "label": "Close"
+                                    }
+                                },
+                                "text": {
+                                    "reverted": "Entry has been reverted"
+                                }
+                            },
+                            "filterByDatesModal": {
+                                "header": "Remove by dates",
+                                "form": {
+                                    "startDate": {
+                                        "label": "Start date"
+                                    },
+                                    "endDate": {
+                                        "label": "End date"
+                                    }
+                                },
+                                "button": {
+                                    "close": {
+                                        "label": "Close"
+                                    }
+                                },
+                                "text": {
+                                    "info": "Removes entries <b>between</b> given dates. At least one date must be set.",
+                                    "validation": "At least one date must be set!"
+                                }
+                            },
+                            "table": {
+                                "input": {
+                                    "date": {
+                                        "label": "Date"
+                                    },
+                                    "money": {
+                                        "label": "Payment"
+                                    },
+                                    "description": {
+                                        "label": "Description"
+                                    }
+                                },
+                                "header": {
+                                    "date": {
+                                        "label": "Date"
+                                    },
+                                    "money": {
+                                        "label": "Payment"
+                                    },
+                                    "description": {
+                                        "label": "Description"
+                                    },
+                                    "type": {
+                                        "label": "Type"
+                                    },
+                                    "actions": {
+                                        "label": "Actions"
+                                    },
+                                    "currency": {
+                                        "label": "Currency"
+                                    }
+                                }
+                            }
+                        },
+                        "summary": {
+                            "label": "Summary"
+                        }
+                    }
+                }
+            },
+            "newForm": {
+                "header": "Add new entry",
+                "date": {
+                    "label": "Date"
+                },
+                "money": {
+                    "label": "Money"
+                },
+                "description": {
+                    "label": "Description"
+                },
+                "type": {
+                    "label": "Type"
+                },
+                "submit": {
+                    "label": "Submit"
+                }
+            },
+            "filter": {
+                "label": "Filter by year"
+            },
+            "description": {
+                "monthly": "Lists of the money spent in each month with separate summary per month and per payment type.",
+                "import": "Import the payment data from a file. <b>Keep in mind</b>: data-filters operate on from-file provided data, not on in-input data."
+            },
+            "text": {
+                "summary": "Summary"
+            },
+            "table": {
+                "headers": {
+                    "date": {
+                        "label": "Date"
+                    },
+                    "money": {
+                        "label": "Money"
+                    },
+                    "description": {
+                        "label": "Description"
+                    },
+                    "type": {
+                        "label": "Type"
+                    },
+                    "actions": {
+                        "label": "Actions"
+                    }
+                }
+            }
+        }
+    }
+}

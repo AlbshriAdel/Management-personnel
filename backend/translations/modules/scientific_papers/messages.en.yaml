@@ -1,0 +1,9 @@
+module:
+  scientific_papers:
+    status:
+      in_progress: "In Progress"
+      under_review: "Under Review"
+      published: "Published"
+    common:
+      paperNotFound: "Paper not found"
+      versionNotFound: "Version not found"

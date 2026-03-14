@@ -1,0 +1,31 @@
+{
+    "dashboard": {
+        "widget": {
+            "goalPayments": {
+                "header": "Goals payments"
+            },
+            "goalProgress": {
+                "header": "Goals progress"
+            },
+            "pendingIssues": {
+                "header": "Pending issues"
+            },
+            "schedules": {
+                "header": "Schedules",
+                "text": {
+                    "days": "day/s"
+                }
+            }
+        },
+        "config": {
+            "button": {
+                "widgetSize": {
+                    "label": "Widget size",
+                    "text": {
+                        "full": "Full"
+                    }
+                }
+            }
+        }
+    }
+}
