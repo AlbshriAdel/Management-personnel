@@ -1,0 +1,71 @@
+<?php
+
+
+namespace App\Services\Validation\Validators\Modules\Payments;
+
+use App\DTO\ValidationResultDto;
+use App\Entity\Interfaces\ValidateEntityInterface;
+use App\Entity\Modules\Payments\MyRecurringPaymentMonthly;
+use App\Services\Validation\Validators\AbstractValidator;
+use Exception;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Class MyRecurringPaymentsValidator
+ * @package App\Controller\Validators\Entities
+ */
+class MyRecurringPaymentsValidator extends AbstractValidator {
+
+    /**
+     * Initialize logic
+     *  must be overwritten by children
+     */
+    protected function init(): void {
+        // nothing here
+    }
+
+    /**
+     * @inheritDoc
+     * @param string $supportedClass
+     */
+    protected function setSupportedClass(string $supportedClass): void {
+        $this->supportedClass = $supportedClass;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param ValidateEntityInterface|MyRecurringPaymentMonthly $entity
+     *
+     * @return ValidationResultDto
+     * @throws Exception
+     */
+    public function validate(ValidateEntityInterface $entity): ValidationResultDto {
+
+        $this->setSupportedClass(MyRecurringPaymentMonthly::class);
+        parent::validate($entity);
+
+        $this->validateDateOfMonth($entity);
+        $validationResult = $this->processValidationResult();
+
+        return $validationResult;
+    }
+
+    /**
+     * @param ValidateEntityInterface|MyRecurringPaymentMonthly $entity
+     */
+    private function validateDateOfMonth($entity): void
+    {
+        $this->constraintViolationsLists["dayOfMonth"] = $this->validator->validate($entity->getDayOfMonth(), [
+            new Assert\GreaterThanOrEqual([
+                "value"   => MyRecurringPaymentMonthly::MIN_DAY_OF_MONTH,
+                "message" => $this->translator->trans('validations.myRecurringPaymentsValidator.dayOfMonth.greaterThanOrEqual', ["%value%" => MyRecurringPaymentMonthly::MIN_DAY_OF_MONTH])
+            ]),
+            new Assert\LessThanOrEqual([
+                "value"   => MyRecurringPaymentMonthly::MAX_DAY_OF_MONTH,
+                "message" => $this->translator->trans('validations.myRecurringPaymentsValidator.dayOfMonth.lessThanOrEqual', ["%value%" => MyRecurringPaymentMonthly::MAX_DAY_OF_MONTH])
+            ])
+        ]);
+    }
+
+}
