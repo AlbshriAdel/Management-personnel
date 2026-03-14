@@ -1,0 +1,82 @@
+{
+    "security": {
+        "register": {
+            "header": {
+                "label": "التسجيل"
+            },
+            "texts": {
+                "msg": {
+                    "disabled": "نسخة تجريبية: تم تعطيل التسجيل",
+                    "success": "تم التسجيل بنجاح، يمكنك تسجيل الدخول الآن."
+                },
+                "links": {
+                    "alreadyGotAnAccount": {
+                        "label": "لديك حساب بالفعل؟",
+                        "linkText": "تسجيل الدخول هنا"
+                    },
+                    "forgotPassword": {
+                        "label": "نسيت كلمة المرور؟",
+                        "linkText": "إعادة تعيين كلمة المرور"
+                    }
+                }
+            },
+            "form": {
+                "email": {
+                    "label": "البريد الإلكتروني"
+                },
+                "username": {
+                    "label": "اسم المستخدم"
+                },
+                "password": {
+                    "label": "كلمة المرور"
+                },
+                "confirmPassword": {
+                    "label": "تأكيد كلمة المرور"
+                },
+                "lockPassword": {
+                    "text": "كلمة مرور القفل"
+                },
+                "confirmLockPassword": {
+                    "label": "تأكيد كلمة مرور القفل"
+                },
+                "submit": {
+                    "label": "إرسال"
+                }
+            }
+        },
+        "login": {
+            "info": {
+                "line1": "هذه نسختك الخاصة من أداة الإدارة!"
+            },
+            "loginHeader": "تسجيل الدخول",
+            "welcomeTo": "مرحباً بك في",
+            "links": {
+                "register": {
+                    "label": "مستخدم جديد:",
+                    "linkText": "سجل هنا"
+                },
+                "forgotPassword": {
+                    "label": "نسيت كلمة المرور؟",
+                    "linkText": "إعادة تعيين كلمة المرور"
+                },
+                "repository": {
+                    "label": "المستودع"
+                },
+                "documentation": {
+                    "label": "التوثيق"
+                }
+            },
+            "loginForm": {
+                "email": {
+                    "label": "البريد الإلكتروني"
+                },
+                "password": {
+                    "label": "كلمة المرور"
+                },
+                "submit": {
+                    "label": "إرسال"
+                }
+            }
+        }
+    }
+}

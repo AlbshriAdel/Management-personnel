@@ -1,0 +1,10 @@
+file:
+  msg:
+    fileRemoved: "تم إزالة الملف"
+    couldNotRemove: "تعذر إزالة الملف"
+    fileDoesNotExist: "هذا الملف غير موجود"
+    unsafePathCancelled: "تم إلغاء الإجراء - تم اكتشاف مسار رفع غير آمن!"
+  upload:
+    msg:
+      uploadSuccess: "تم رفع الملف"
+      uploadError: "تعذر رفع الملف - حدث خطأ ما"

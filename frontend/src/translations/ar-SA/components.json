@@ -1,0 +1,44 @@
+{
+    "components": {
+        "multiselect": {
+            "text": {
+                "addOrSelect": "اختر، أو اكتب + اضغط Enter"
+            }
+        },
+        "yearSelect": {
+            "label": "السنة",
+            "option": {
+                "all": {
+                    "label": "الكل"
+                }
+            }
+        },
+        "actions": {
+            "edit": {
+                "label": "تعديل"
+            },
+            "remove": {
+                "label": "إزالة"
+            },
+            "copy": {
+                "label": "نسخ"
+            }
+        },
+        "modal": {
+            "buttons": {
+                "cancel": "إلغاء"
+            },
+            "text": {
+                "removeRecord": "هل تريد حقاً إزالة هذا الإدخال؟"
+            }
+        },
+        "passwordWithPreview": {
+            "togglePreview": {
+                "label": "تبديل المعاينة"
+            },
+            "generatePassword": {
+                "label": "إنشاء كلمة مرور"
+            }
+        }
+    }
+}

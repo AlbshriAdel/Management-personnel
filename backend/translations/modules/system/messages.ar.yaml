@@ -1,0 +1,14 @@
+module:
+  system:
+    settings:
+      finances:
+        currencies:
+          msg:
+            noRemovingDefault: "لا يمكن إزالة العملة الافتراضية"
+            nameAlreadyInUse: "توجد عملة بهذا الاسم"
+            noDefaultCurrency: "لا يمكن الحفظ - لن توجد عملة افتراضية، يرجى توفير واحدة"
+    notification:
+      type:
+        schedule:
+          msg:
+            inDays: "خلال {{days}} يوم/أيام"

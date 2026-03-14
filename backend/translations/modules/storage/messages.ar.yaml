@@ -1,0 +1,48 @@
+module:
+  storage:
+    moveFileOrDir:
+      parentIntoDirNotAllowed: "لا يمكن نقل المجلد الأب إلى فرعه"
+      folderWithThisNameAlreadyExist: "يوجد مجلد بهذا الاسم تحت المسار المستهدف"
+      unknownError: "خطأ غير معروف"
+      oldPathEqualsNewPath: "المسار القديم هو نفسه المسار الجديد - غير مسموح"
+      failedCopySomeFiles: "تعذر نقل بعض الملفات - خطأ غير معروف. الملفات:"
+      filesHaveBeenMoved: "تم نقل الملفات"
+      folderHaveBeenMoved: "تم نقل المجلد"
+      folderCouldNotBeMovedReverted: "خطأ غير معروف. تعذر نقل المجلد - تم التراجع عن التغييرات"
+      folderMovedDatabaseChangesFailed: "فشل نقل المجلد، تم التراجع عن تغييرات قاعدة البيانات لكن لا يمكن إرجاع المجلد"
+      filesHaveBeenCopied: "تم نسخ الملفات"
+      filesHaveBeenCopiedButExisted: "تم نسخ الملفات، لكن بعضها كان موجوداً، لذا تم إضافة التاريخ والوقت للأسماء."
+      filesListEmpty: "قائمة الملفات فارغة"
+    common:
+      fileNameExistInFolder: "يوجد ملف بهذا الاسم في هذا المجلد."
+      fileDoesNotExist: "هذا الملف غير موجود"
+      fileUpdateDirPathIsNotFolder: "المسار المتوقع للمجلد ليس مجلداً"
+      folderNotWritable: "هذا المجلد غير قابل للكتابة"
+      unknownError: "خطأ غير معروف"
+      fileHasBeenUpdated: "تم تحديث الملف"
+      dirExists: "يوجد مجلد بهذا الاسم"
+      dirNotWritable: "هذا المجلد غير قابل للكتابة: "
+      dirNameIsEmpty: "لا يمكن أن يكون اسم المجلد فارغاً"
+      existingDirPath: "لا يمكن أن يكون مسار المجلد الموجود فارغاً"
+      error: "خطأ - حدث خطأ ما"
+      errorReverted: "خطأ - حدث خطأ ما. تم التراجع عن التغييرات."
+      folderNotExist: "هذا المجلد غير موجود: "
+    remove:
+      couldNotRemoveSomeFiles: "تعذر إزالة بعض الملفات"
+      filesHaveBeenRemoved: "تم إزالة الملفات"
+      cannotRemoveStorageBaseDir: "إزالة مجلد التخزين الأساسي غير مسموح!"
+      folderHasBeenRemoved: "تم إزالة المجلد"
+    newFolder:
+      success: "تم إنشاء مجلد جديد"
+    renameFolder:
+      success: "تم إعادة تسمية المجلد"
+    moveOrCopyFolder:
+      cannotMoveBaseDir: "نقل مجلد التخزين الأساسي غير مسموح!"
+    rename:
+      currFileNameIsEmpty: "لا يمكن أن يكون اسم الملف الحالي فارغاً"
+      newFileNameIsEmpty: "لا يمكن أن يكون اسم الملف الجديد فارغاً"
+      dirPathIsEmpty: "لا يمكن أن يكون مسار المجلد فارغاً"
+    lock:
+      isLocked: "تم قفل المجلد."
+      isUnlocked: "تم فتح المجلد."
+      parentDirIsLocked: "المجلد الأب ({{path}}) مقفل، لذلك يبقى المجلد الحالي مقفلاً أيضاً."

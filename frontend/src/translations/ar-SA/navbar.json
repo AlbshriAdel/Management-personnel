@@ -1,0 +1,246 @@
+{
+    "navbar": {
+        "footer": {
+            "documentation": {
+                "label": "التوثيق"
+            }
+        },
+        "topBar": {
+            "userMenu": {
+                "profile": {
+                    "description": "إعدادات الملف الشخصي - كلمة المرور، الصورة، الاسم المستعار، إلخ.",
+                    "label": "الملف الشخصي"
+                },
+                "settings": {
+                    "description": "إعدادات النظام - على سبيل المثال عناصر لوحة التحكم.",
+                    "label": "الإعدادات"
+                },
+                "lock": {
+                    "description": "كلمة مرور القفل الخاصة. تفتح الإدخالات المخفية، وتسمح بعرضها مرة أخرى. انظر وحدة <b>الملاحظات</b>.",
+                    "state": {
+                        "locked": {
+                            "label": "مقفل"
+                        },
+                        "unlocked": {
+                            "label": "مفتوح"
+                        }
+                    }
+                },
+                "logout": {
+                    "description": "مع السلامة!",
+                    "label": "تسجيل الخروج"
+                }
+            },
+            "notification": {
+                "message": "الإشعارات"
+            },
+            "timer": {
+                "timeLeft": {
+                    "message": "الوقت المتبقي حتى تسجيل الخروج"
+                }
+            }
+        },
+        "rightSidebar": {
+            "menu": {
+                "goals": {
+                    "label": "الأهداف",
+                    "children": {
+                        "list": {
+                            "label": "القائمة"
+                        },
+                        "payments": {
+                            "label": "المدفوعات"
+                        }
+                    }
+                },
+                "todo": {
+                    "label": "المهام",
+                    "children": {
+                        "list": {
+                            "label": "القائمة"
+                        }
+                    }
+                },
+                "notes": {
+                    "label": "الملاحظات",
+                    "children": {
+                        "create": {
+                            "label": "إنشاء جديد"
+                        },
+                        "settings": {
+                            "label": "الإعدادات"
+                        },
+                        "categories": {
+                            "label": "الفئات"
+                        }
+                    }
+                },
+                "contacts": {
+                    "label": "جهات الاتصال",
+                    "children": {
+                        "contacts": {
+                            "label": "القائمة"
+                        },
+                        "settings": {
+                            "label": "الإعدادات"
+                        }
+                    }
+                },
+                "passwords": {
+                    "label": "كلمات المرور",
+                    "children": {
+                        "list": {
+                            "label": "القائمة"
+                        },
+                        "settings": {
+                            "label": "الإعدادات"
+                        }
+                    }
+                },
+                "achievements": {
+                    "label": "الإنجازات",
+                    "children": {
+                        "list": {
+                            "label": "القائمة"
+                        }
+                    }
+                },
+                "calendar": {
+                    "label": "التقويم",
+                    "children": {
+                        "view": {
+                            "label": "عرض"
+                        }
+                    }
+                },
+                "issues": {
+                    "label": "القضايا",
+                    "children": {
+                        "pending": {
+                            "label": "قيد الانتظار"
+                        }
+                    }
+                },
+                "travels": {
+                    "label": "السفر",
+                    "children": {
+                        "ideas": {
+                            "label": "الأفكار"
+                        }
+                    }
+                },
+                "payments": {
+                    "label": "المدفوعات",
+                    "children": {
+                        "productPrices": {
+                            "label": "أسعار المنتجات"
+                        },
+                        "monthlyPayments": {
+                            "label": "المدفوعات الشهرية"
+                        },
+                        "moneyOwed": {
+                            "label": "المال المستحق"
+                        },
+                        "incomes": {
+                            "label": "الدخل"
+                        },
+                        "bills": {
+                            "label": "الفواتير"
+                        },
+                        "settings": {
+                            "label": "الإعدادات"
+                        }
+                    }
+                },
+                "shopping": {
+                    "label": "التسوق",
+                    "children": {
+                        "plans": {
+                            "label": "الخطط"
+                        }
+                    }
+                },
+                "job": {
+                    "label": "العمل",
+                    "children": {
+                        "afterhours": {
+                            "label": "ساعات إضافية"
+                        },
+                        "holidays": {
+                            "label": "العطل"
+                        },
+                        "settings": {
+                            "label": "الإعدادات"
+                        }
+                    }
+                },
+                "reports": {
+                    "label": "التقارير",
+                    "children": {
+                        "paymentSummaries": {
+                            "label": "ملخصات المدفوعات"
+                        },
+                        "historicalMoneyOwed": {
+                            "label": "المال المستحق تاريخياً"
+                        },
+                        "paymentCharts": {
+                            "label": "رسوم المدفوعات"
+                        },
+                        "savingCharts": {
+                            "label": "رسوم الادخار"
+                        }
+                    }
+                },
+                "files": {
+                    "label": "الملفات",
+                    "children": {
+                        "settings": {
+                            "label": "الإعدادات"
+                        },
+                        "mainFolder": {
+                            "label": "عرض"
+                        }
+                    }
+                },
+                "images": {
+                    "label": "الصور",
+                    "children": {
+                        "settings": {
+                            "label": "الإعدادات"
+                        },
+                        "mainFolder": {
+                            "label": "عرض"
+                        }
+                    }
+                },
+                "videos": {
+                    "label": "الفيديوهات",
+                    "children": {
+                        "settings": {
+                            "label": "الإعدادات"
+                        },
+                        "mainFolder": {
+                            "label": "عرض"
+                        }
+                    }
+                },
+                "storage": {
+                    "label": "التخزين",
+                    "children": {
+                        "manage": {
+                            "label": "إدارة"
+                        }
+                    }
+                },
+                "scientificPapers": {
+                    "label": "الأوراق العلمية",
+                    "children": {
+                        "list": {
+                            "label": "الأوراق"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

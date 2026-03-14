@@ -78,6 +78,12 @@ async function startApplication(): Promise<void> {
     await bootLoader.boot();
     let vueI18nInstance = await translationsProvider.buildVueI18nInstance();
 
+    // Set initial document direction for RTL support (Arabic)
+    const initialLocale = vueI18nInstance.global.locale as string;
+    const isRtl = initialLocale === 'ar-SA';
+    document.documentElement.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
+    document.documentElement.setAttribute('lang', isRtl ? 'ar' : 'en');
+
     let vueApp = createApp(App);
     let router = (new VueRouter).getPreconfiguredRouter();
 

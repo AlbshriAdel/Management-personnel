@@ -2,8 +2,8 @@
     "views": {
         "navbar": {
             "main": {
-                "login": "Login",
-                "register": "Register"
+                "login": "تسجيل الدخول",
+                "register": "التسجيل"
             }
         }
     },

@@ -40,6 +40,7 @@
         <div class="dropdown-content w-48 bottom-end">
           <div class="flex flex-col w-full">
             <ul class="list-none">
+              <LocaleSwitcher />
 
               <!-- Profile -->
               <single-menu-element :label="$t('navbar.topBar.userMenu.profile.label')"
@@ -116,6 +117,7 @@
 
 <script lang="ts">
 import LockModal         from "@/components/LoggedIn/Navigation/TopBarComponents/UserMenuComponents/LockModal.vue";
+import LocaleSwitcher    from "@/components/LoggedIn/Navigation/TopBarComponents/UserMenuComponents/LocaleSwitcher.vue";
 import SingleMenuElement from "@/components/LoggedIn/Navigation/TopBarComponents/UserMenuComponents/SingleMenuElement.vue";
 import DeveloperSidebar  from "@/components/Development/Sidebar/DeveloperSidebar.vue";
 
@@ -165,6 +167,7 @@ export default {
   ],
   components: {
     "single-menu-element" : SingleMenuElement,
+    LocaleSwitcher,
     LockModal,
   },
   mixins: [
