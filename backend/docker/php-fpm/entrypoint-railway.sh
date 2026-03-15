@@ -72,8 +72,22 @@ function setEncryptionKey() {
 }
 
 function generateJwtKeyPair() {
-  logDebug "Generating JWT key pair - only if none exists yet."
-  $BIN_CONSOLE_PATH lexik:jwt:generate-keypair --skip-if-exists;
+  # On Railway the filesystem is ephemeral: keys are lost on every redeploy.
+  # Supply JWT_PRIVATE_KEY_B64 and JWT_PUBLIC_KEY_B64 as base64-encoded env vars
+  # to persist the key pair across deploys (avoids invalidating all user sessions).
+  # To generate: base64 -w 0 config/jwt/prod/private.pem
+  JWT_DIR="${ROOT_DIR_PATH}config/jwt/${APP_ENV:-prod}"
+  mkdir -p "$JWT_DIR"
+
+  if [ -n "${JWT_PRIVATE_KEY_B64:-}" ] && [ -n "${JWT_PUBLIC_KEY_B64:-}" ]; then
+    logDebug "Loading JWT keys from environment variables"
+    echo "$JWT_PRIVATE_KEY_B64" | base64 -d > "$JWT_DIR/private.pem"
+    echo "$JWT_PUBLIC_KEY_B64"  | base64 -d > "$JWT_DIR/public.pem"
+    chmod 644 "$JWT_DIR/private.pem" "$JWT_DIR/public.pem"
+  else
+    logDebug "Generating JWT key pair - only if none exists yet (WARNING: keys are ephemeral without JWT_PRIVATE_KEY_B64/JWT_PUBLIC_KEY_B64 env vars)"
+    $BIN_CONSOLE_PATH lexik:jwt:generate-keypair --skip-if-exists;
+  fi
 }
 
 # ---- Wait for database ----

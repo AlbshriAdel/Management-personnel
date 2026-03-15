@@ -1,2 +1,2 @@
 parameters:
-    encrypt_key: 'IK9aghdoR1yIPYv8ov8xedRcIHUqF7ziRdVCuGEKofE='
+    encrypt_key: '%env(ENCRYPT_KEY)%'

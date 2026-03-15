@@ -6,3 +6,6 @@ healthcheckPath = "/api/alive"
 healthcheckTimeout = 120
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 3
+
+[[volumes]]
+mountPath = "/application/public/upload"
