@@ -82,6 +82,9 @@
         "allow-plugins": {
             "cweagans/composer-patches": true,
             "symfony/flex": true
+        },
+        "audit": {
+            "block-insecure": false
         }
     },
     "autoload": {
