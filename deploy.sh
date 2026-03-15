@@ -165,10 +165,22 @@ deploy_docker() {
     exit 1
   fi
 
-  print_header "Building and starting containers"
-  docker compose -f docker-compose.yml up -d --build
+  print_header "Building images"
+  docker compose -f docker-compose.yml build
 
-  print_header "Waiting for services to be ready..."
+  print_header "Starting database first"
+  docker compose -f docker-compose.yml up -d pms-database-mariadb
+
+  print_header "Waiting for database to be ready..."
+  sleep 15
+
+  print_header "Installing PHP dependencies (composer install)"
+  docker compose -f docker-compose.yml run --rm --no-deps --entrypoint "sh" pms-php-fpm -c "composer install --no-interaction --ignore-platform-reqs"
+
+  print_header "Starting all containers"
+  docker compose -f docker-compose.yml up -d
+
+  print_header "Waiting for PHP container to be ready..."
   sleep 10
 
   print_header "Running database migrations"

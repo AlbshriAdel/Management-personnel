@@ -39,6 +39,7 @@ function createDirs() {
   FILES_UPLOAD_DIR=$(getEnvValue "FILES_UPLOAD_DIR");
   VIDEOS_UPLOAD_DIR=$(getEnvValue "VIDEOS_UPLOAD_DIR");
   MINIATURES_UPLOAD_DIR=$(getEnvValue "MINIATURES_UPLOAD_DIR");
+  SCIENTIFIC_PAPERS_UPLOAD_DIR=$(getEnvValue "SCIENTIFIC_PAPERS_UPLOAD_DIR");
   PUBLIC_ROOT_DIR=$(getEnvValue "PUBLIC_ROOT_DIR");
 
   mkdir -p "$PUBLIC_ROOT_DIR";
@@ -47,6 +48,7 @@ function createDirs() {
   mkdir -p "$PUBLIC_ROOT_DIR/$FILES_UPLOAD_DIR";
   mkdir -p "$PUBLIC_ROOT_DIR/$VIDEOS_UPLOAD_DIR";
   mkdir -p "$PUBLIC_ROOT_DIR/$MINIATURES_UPLOAD_DIR";
+  mkdir -p "$PUBLIC_ROOT_DIR/${SCIENTIFIC_PAPERS_UPLOAD_DIR:-upload/scientific_papers}";
 
   chown www-data:www-data "$PUBLIC_ROOT_DIR" -R;
   chown www-data:www-data "$PUBLIC_ROOT_DIR/$UPLOAD_DIR/PROFILE_IMAGE" -R;
@@ -54,6 +56,7 @@ function createDirs() {
   chown www-data:www-data "$PUBLIC_ROOT_DIR/$FILES_UPLOAD_DIR" -R;
   chown www-data:www-data "$PUBLIC_ROOT_DIR/$VIDEOS_UPLOAD_DIR" -R;
   chown www-data:www-data "$PUBLIC_ROOT_DIR/$MINIATURES_UPLOAD_DIR" -R;
+  chown www-data:www-data "$PUBLIC_ROOT_DIR/${SCIENTIFIC_PAPERS_UPLOAD_DIR:-upload/scientific_papers}" -R;
 }
 
 # Generates new encryption key and returns it

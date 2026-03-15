@@ -1,4 +1,3 @@
-version: "3.1"
 services:
   pms-database-mariadb:
     image: mariadb:11.5.2
