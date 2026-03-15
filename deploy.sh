@@ -20,10 +20,14 @@ show_help() {
   echo "  --run      Start services after deployment"
   echo "  --help     Show this help"
   echo ""
+  echo "Environment (for --docker):"
+  echo "  GITHUB_TOKEN  GitHub token for Composer (needed for private repos / rate limits)"
+  echo "                Example: GITHUB_TOKEN=ghp_xxx ./deploy.sh --docker --run"
+  echo ""
   echo "Examples:"
   echo "  ./deploy.sh --docker --run    # Full Docker deployment and start"
+  echo "  GITHUB_TOKEN=ghp_xxx ./deploy.sh --docker --run  # With GitHub auth"
   echo "  ./deploy.sh --manual          # Manual deploy (backend + frontend build)"
-  echo "  ./deploy.sh --manual --run    # Manual deploy + run instructions"
   exit 0
 }
 
@@ -175,9 +179,27 @@ deploy_docker() {
   sleep 15
 
   print_header "Installing PHP dependencies (composer)"
-  if ! docker compose -f docker-compose.yml run --rm --no-deps --entrypoint "sh" pms-php-fpm -c "composer install --no-interaction --ignore-platform-reqs"; then
+  COMPOSER_ENV=""
+  if [ -n "${GITHUB_TOKEN:-}" ]; then
+    COMPOSER_ENV="-e GITHUB_TOKEN=${GITHUB_TOKEN}"
+    print_warn "Using GITHUB_TOKEN for Composer (required for private repos / rate limits)"
+  elif [ -n "${COMPOSER_AUTH:-}" ]; then
+    COMPOSER_ENV="-e COMPOSER_AUTH=${COMPOSER_AUTH}"
+  fi
+  COMPOSER_CMD="composer install --no-interaction --ignore-platform-reqs"
+  if ! docker compose -f docker-compose.yml run --rm --no-deps $COMPOSER_ENV --entrypoint "sh" pms-php-fpm -c "
+    [ -n \"\${GITHUB_TOKEN:-}\" ] && composer config -g github-oauth.github.com \"\$GITHUB_TOKEN\" || true;
+    $COMPOSER_CMD
+  "; then
     print_warn "Lock file out of date. Running composer update to sync..."
-    docker compose -f docker-compose.yml run --rm --no-deps --entrypoint "sh" pms-php-fpm -c "composer update --no-interaction --ignore-platform-reqs"
+    if ! docker compose -f docker-compose.yml run --rm --no-deps $COMPOSER_ENV --entrypoint "sh" pms-php-fpm -c "
+      [ -n \"\${GITHUB_TOKEN:-}\" ] && composer config -g github-oauth.github.com \"\$GITHUB_TOKEN\" || true;
+      composer update aws/aws-sdk-php --no-interaction --ignore-platform-reqs --with-all-dependencies
+    "; then
+      print_error "Composer update failed. If you see 'Could not authenticate against github.com', set GITHUB_TOKEN:"
+      print_error "  GITHUB_TOKEN=ghp_your_token ./deploy.sh --docker --run"
+      exit 1
+    fi
   fi
 
   print_header "Starting all containers"
