@@ -174,8 +174,11 @@ deploy_docker() {
   print_header "Waiting for database to be ready..."
   sleep 15
 
-  print_header "Installing PHP dependencies (composer install)"
-  docker compose -f docker-compose.yml run --rm --no-deps --entrypoint "sh" pms-php-fpm -c "composer install --no-interaction --ignore-platform-reqs"
+  print_header "Installing PHP dependencies (composer)"
+  if ! docker compose -f docker-compose.yml run --rm --no-deps --entrypoint "sh" pms-php-fpm -c "composer install --no-interaction --ignore-platform-reqs"; then
+    print_warn "Lock file out of date. Running composer update to sync..."
+    docker compose -f docker-compose.yml run --rm --no-deps --entrypoint "sh" pms-php-fpm -c "composer update --no-interaction --ignore-platform-reqs"
+  fi
 
   print_header "Starting all containers"
   docker compose -f docker-compose.yml up -d
