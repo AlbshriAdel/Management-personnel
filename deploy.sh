@@ -202,18 +202,18 @@ deploy_docker() {
     fi
   fi
 
+  print_header "Running database migrations (one-off container)"
+  docker compose -f docker-compose.yml run --rm --no-deps --entrypoint "sh" pms-php-fpm -c "
+    php bin/console doctrine:database:create --if-not-exists 2>/dev/null || true;
+    php bin/console doctrine:migrations:migrate --no-interaction;
+    php bin/console cache:clear --env=prod
+  "
+
   print_header "Starting all containers"
   docker compose -f docker-compose.yml up -d
 
-  print_header "Waiting for PHP container to be ready..."
-  sleep 10
-
-  print_header "Running database migrations"
-  docker compose -f docker-compose.yml exec -T pms-php-fpm php bin/console doctrine:database:create --if-not-exists 2>/dev/null || true
-  docker compose -f docker-compose.yml exec -T pms-php-fpm php bin/console doctrine:migrations:migrate --no-interaction
-
-  print_header "Clearing cache"
-  docker compose -f docker-compose.yml exec -T pms-php-fpm php bin/console cache:clear --env=prod
+  print_header "Waiting for containers to be ready..."
+  sleep 5
 
   print_header "Building frontend (inside container or locally)"
   if check_node; then
