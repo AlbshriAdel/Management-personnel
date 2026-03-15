@@ -1,0 +1,44 @@
+FROM php:8.3-fpm
+
+# Install system dependencies + Nginx
+RUN apt-get update && apt-get install -y \
+    nginx \
+    libicu-dev g++ \
+    libzip-dev zip \
+    libpng-dev \
+    zlib1g-dev \
+    mariadb-client \
+    netcat-openbsd \
+    nano less cron \
+    && docker-php-ext-configure intl \
+    && docker-php-ext-install intl pdo pdo_mysql opcache zip gd \
+    && apt-get install -y gcc g++ make autoconf libc-dev pkg-config \
+    && yes '' | pecl install apcu \
+    && docker-php-ext-enable apcu \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# Copy PHP-FPM config files
+COPY docker/php-fpm/fpm-pool.conf /usr/local/etc/php-fpm.d/zz-docker.conf
+COPY docker/php-fpm/php.ini /usr/local/etc/php/conf.d/php.ini
+
+# Copy Nginx config
+COPY docker/nginx/railway.conf /etc/nginx/sites-available/default
+
+# Remove default nginx site and link ours
+RUN rm -f /etc/nginx/sites-enabled/default \
+    && ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+# Copy application source
+WORKDIR /application
+COPY . .
+
+# Copy entrypoint
+COPY docker/php-fpm/entrypoint-railway.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 8080
+
+CMD ["/entrypoint.sh"]
