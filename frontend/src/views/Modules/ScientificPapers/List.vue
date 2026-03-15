@@ -48,7 +48,7 @@ import FloatingRoundedPlus from "@/components/Ui/Floating/FloatingRoundedPlus.vu
 
 import { ComponentData } from "@/scripts/Vue/Types/Components/types";
 import { PapersStore } from "@/scripts/Vue/Store/Module/ScientificPapers/PapersStore";
-import BackendModuleCaller from "@/scripts/Core/Services/Request/BackendModuleCaller";
+import { BackendModuleCaller } from "@/scripts/Core/Services/Request/BackendModuleCaller";
 import SymfonyScientificPapersRoutes from "@/router/SymfonyRoutes/Modules/SymfonyScientificPapersRoutes";
 import VueRouterScientificPapers from "@/router/Modules/VueRouterScientificPapers";
 

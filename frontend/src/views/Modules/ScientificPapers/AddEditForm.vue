@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts">
-import BackendModuleCaller from "@/scripts/Core/Services/Request/BackendModuleCaller";
+import { BackendModuleCaller } from "@/scripts/Core/Services/Request/BackendModuleCaller";
 import BackendModuleCallConfig from "@/scripts/Dto/BackendModuleCallConfig";
 import BaseApiResponse from "@/scripts/Response/BaseApiResponse";
 import SymfonyScientificPapersRoutes from "@/router/SymfonyRoutes/Modules/SymfonyScientificPapersRoutes";
